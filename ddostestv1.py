@@ -1,11 +1,5 @@
-#!/usr/bin/env python3
-"""
-MIXED DOS TOOL - HTTP (requests) + UDP + SYN floods
-- HTTP: measures success/failure and avg response time (requests library)
-- UDP: optional spoofing (root/Linux only)
-- SYN: raw socket flood (root/Linux only)
-Use only against YOUR OWN infrastructure.
-"""
+
+
 
 import requests
 import socket
