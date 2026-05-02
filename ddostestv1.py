@@ -39,7 +39,7 @@ for idx, line in enumerate(banner_lines):
     green_val = int(255 * (1 - idx / max(1, len(banner_lines)-1)))
     print(col_green(line, green_val))
 print(col_green("\n[+] Opening Discord invite link..."))
-webbrowser.open("https://discord.gg/Z9nc6sAFyw")
+webbrowser.open("discord invite link")
 def is_admin() -> bool:
     if sys.platform == "win32":
         try:
